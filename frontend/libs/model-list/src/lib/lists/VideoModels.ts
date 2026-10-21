@@ -77,6 +77,7 @@ export const VIDEO_MODELS: VideoModel[] = [
   }),
   new VideoModel({
     id: "kling_1_6_pro",
+    providers: [GenerationProvider.Fal, GenerationProvider.Artcraft],
     tauriId: "kling_1p6_pro",
     fullName: "Kling 1.6 Pro",
     category: "video",
@@ -93,6 +94,7 @@ export const VIDEO_MODELS: VideoModel[] = [
   }),
   new VideoModel({
     id: "kling_2_1_pro",
+    providers: [GenerationProvider.Fal, GenerationProvider.Artcraft],
     tauriId: "kling_2p1_pro",
     fullName: "Kling 2.1 Pro",
     category: "video",
@@ -109,6 +111,7 @@ export const VIDEO_MODELS: VideoModel[] = [
   }),
   new VideoModel({
     id: "kling_2_1_master",
+    providers: [GenerationProvider.Fal, GenerationProvider.Artcraft],
     tauriId: "kling_2p1_master",
     fullName: "Kling 2.1 Master",
     category: "video",
@@ -125,6 +128,7 @@ export const VIDEO_MODELS: VideoModel[] = [
   }),
   new VideoModel({
     id: "kling_2p5_turbo_pro",
+    providers: [GenerationProvider.Fal, GenerationProvider.Artcraft],
     tauriId: "kling_2p5_turbo_pro",
     fullName: "Kling 2.5 Turbo Pro",
     category: "video",
@@ -141,6 +145,7 @@ export const VIDEO_MODELS: VideoModel[] = [
   }),
   new VideoModel({
     id: "kling_2p6_pro",
+    providers: [GenerationProvider.Fal, GenerationProvider.Artcraft],
     tauriId: "kling_2p6_pro",
     fullName: "Kling 2.6 Pro",
     category: "video",
@@ -157,6 +162,7 @@ export const VIDEO_MODELS: VideoModel[] = [
   }),
   new VideoModel({
     id: "kling_3p0_standard",
+    providers: [GenerationProvider.Fal, GenerationProvider.Artcraft],
     tauriId: "kling_3p0_standard",
     fullName: "Kling 3.0 Standard",
     category: "video",
@@ -193,6 +199,7 @@ export const VIDEO_MODELS: VideoModel[] = [
   }),
   new VideoModel({
     id: "kling_3p0_pro",
+    providers: [GenerationProvider.Fal, GenerationProvider.Artcraft],
     tauriId: "kling_3p0_pro",
     fullName: "Kling 3.0 Pro",
     category: "video",
@@ -519,6 +526,7 @@ export const VIDEO_MODELS: VideoModel[] = [
   }),
   new VideoModel({
     id: "veo_2",
+    providers: [GenerationProvider.Fal, GenerationProvider.Artcraft],
     tauriId: "veo_2",
     fullName: "Google Veo 2",
     category: "video",
@@ -535,6 +543,7 @@ export const VIDEO_MODELS: VideoModel[] = [
   }),
   new VideoModel({
     id: "veo_3",
+    providers: [GenerationProvider.Fal, GenerationProvider.Artcraft],
     tauriId: "veo_3",
     fullName: "Google Veo 3",
     category: "video",
@@ -551,6 +560,7 @@ export const VIDEO_MODELS: VideoModel[] = [
   }),
   new VideoModel({
     id: "veo_3_fast",
+    providers: [GenerationProvider.Fal, GenerationProvider.Artcraft],
     tauriId: "veo_3_fast",
     fullName: "Google Veo 3 Fast",
     category: "video",
@@ -567,6 +577,7 @@ export const VIDEO_MODELS: VideoModel[] = [
   }),
   new VideoModel({
     id: "veo_3p1",
+    providers: [GenerationProvider.Fal, GenerationProvider.Artcraft],
     tauriId: "veo_3p1",
     fullName: "Google Veo 3.1",
     category: "video",
@@ -583,6 +594,7 @@ export const VIDEO_MODELS: VideoModel[] = [
   }),
   new VideoModel({
     id: "veo_3p1_fast",
+    providers: [GenerationProvider.Fal, GenerationProvider.Artcraft],
     tauriId: "veo_3p1_fast",
     fullName: "Google Veo 3.1 Fast",
     category: "video",

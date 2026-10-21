@@ -12,7 +12,7 @@ export const OBJECT_3D_MODELS: Object3DModel[] = [
     selectorName: "Hunyuan 3.0",
     selectorDescription: "Highest quality 3D mesh generation",
     selectorBadges: ["~2 min."],
-    providers: [GenerationProvider.Artcraft],
+    providers: [GenerationProvider.Fal, GenerationProvider.Artcraft],
     progressBarTime: 120000,
   }),
   new Object3DModel({
@@ -24,7 +24,7 @@ export const OBJECT_3D_MODELS: Object3DModel[] = [
     selectorName: "Hunyuan 2.0",
     selectorDescription: "Faster, lower fidelity 3D mesh",
     selectorBadges: ["~45 sec."],
-    providers: [GenerationProvider.Artcraft],
+    providers: [GenerationProvider.Fal, GenerationProvider.Artcraft],
     progressBarTime: 60000,
   }),
 ];

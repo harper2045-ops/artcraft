@@ -64,9 +64,15 @@ pub async fn legacy_upload_media_file_from_file<P: AsRef<Path>>(
       .map_err(|err| StorytellerError::Client(ClientError::from(err)))?;
   let file_name = args.path.as_ref().file_name()
       .and_then(|n| n.to_str()).unwrap_or("file").to_string();
+  // Tell the server the type for 3D files; it can't detect `.glb` on its own.
+  let mut part = Part::bytes(file_bytes).file_name(file_name.clone());
+  if file_name.to_ascii_lowercase().ends_with(".glb") {
+    part = part.mime_str("model/gltf-binary")
+        .map_err(|err| StorytellerError::Client(ClientError::from(err)))?;
+  }
   let mut form = Form::new()
       .text("uuid_idempotency_token", generate_random_uuid())
-      .part("file", Part::bytes(file_bytes).file_name(file_name));
+      .part("file", part);
 
   //if args.is_intermediate_system_file {
   //  form = form.text("is_intermediate_system_file", "true");

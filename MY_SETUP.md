@@ -32,3 +32,11 @@ The app keeps its data (credentials, downloads, settings) in `~/Artcraft`, which
 `DEFAULT_DATA_DIR` in `crates/desktop/artcraft/src/core/state/data_dir/app_data_root.rs`.
 Mac folder names ignore case, so the repo lives in `~/artcraft-src` to keep code and data apart.
 Don't clone the repo into `~/ArtCraft`.
+
+## fal for 3D and video (work in progress)
+- Image-to-3D (Hunyuan 3D 3.0/2.0) and image-to-video (Kling, Veo) can run on fal with my own key.
+- **3D results don't save to the library yet.** fal makes the model, but ArtCraft's upload server
+  rejects the `.glb` ("unknown mimetype"). For now, grab the file from `~/Artcraft/temp/` or the fal
+  link and import it into 3D Stage by hand. Next step: try a different upload route for 3D files.
+- **The fal video path hasn't been tested yet.**
+- "Image to 3D World" (splats) still runs on ArtCraft credits only.

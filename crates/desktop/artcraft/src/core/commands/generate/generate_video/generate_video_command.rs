@@ -5,7 +5,9 @@ use crate::core::commands::enqueue::common::notify_frontend_of_errors::notify_fr
 use crate::core::commands::enqueue::generate_error::{BadInputReason, GenerateError, MissingCredentialsReason};
 use crate::core::commands::enqueue::task_enqueue_success::TaskEnqueueSuccess;
 use crate::core::commands::generate::generate_video::artcraft::handle_artcraft_video::handle_video_artcraft;
+use crate::core::commands::generate::generate_video::fal::handle_fal_video::handle_fal_video;
 use crate::core::commands::generate::generate_video::grok::handle_grok_video::handle_grok_video;
+use crate::core::providers::credentials::provider_credential_loading_cache::ProviderCredentialLoadingCache;
 use crate::core::commands::generate::generate_video::request::{
   TauriGenerateVideoErrorType, TauriGenerateVideoRequest, TauriGenerateVideoResponse,
   TauriVideoModel,
@@ -181,6 +183,10 @@ async fn handle_request(
         app_env_configs,
         grok_creds_manager,
       ).await
+    }
+    GenerationProvider::Fal => {
+      let credential_cache = app.state::<ProviderCredentialLoadingCache>();
+      handle_fal_video(&request, app_env_configs, &credential_cache).await
     }
     GenerationProvider::Sora => {
       handle_sora_sora2(

@@ -4,6 +4,7 @@ pub mod common;
 pub mod models;
 pub mod omni;
 
+pub mod fal_mesh;
 pub mod generate_mesh_command;
 pub mod generate_splat_command;
 pub mod generate_audio_command;

@@ -248,8 +248,10 @@ async fn download_file(
   let bytes = response.bytes().await?;
 
   let extension = url_utils::download_extension::extract_download_extension_from_url::extract_download_extension_from_url_str(url)
-    .map(|ext| ext.as_extension_without_period())
-    .unwrap_or("bin");
+    .map(|ext| ext.as_extension_without_period().to_string())
+    // The helper doesn't know some types (e.g. 3D `.glb`); keep the URL's own extension then.
+    .or_else(|| extension_from_url_path(url))
+    .unwrap_or_else(|| "bin".to_string());
 
   let tempdir = app_data_root.temp_dir().path();
   let filename = format!("fal_{}_{}.{}", generate_random_uuid(), index, extension);
@@ -259,6 +261,13 @@ async fn download_file(
   file.write_all(&bytes)?;
 
   Ok(download_path)
+}
+
+fn extension_from_url_path(url: &str) -> Option<String> {
+  let path = url.split(['?', '#']).next()?;
+  let ext = path.rsplit('/').next()?.rsplit_once('.')?.1;
+  let ok = !ext.is_empty() && ext.len() <= 5 && ext.chars().all(|c| c.is_ascii_alphanumeric());
+  ok.then(|| ext.to_ascii_lowercase())
 }
 
 const MAX_UPLOAD_RETRIES: u32 = 5;

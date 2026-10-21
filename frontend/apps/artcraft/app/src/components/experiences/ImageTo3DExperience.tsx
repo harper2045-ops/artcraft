@@ -91,6 +91,10 @@ export const ImageTo3DExperience = ({
     selectedWorldModel?.id,
   );
   const selectedObjectModel = useSelectedModel(OBJECT_MODEL_PAGE);
+  const selectedObjectProvider = useSelectedProviderForModel(
+    OBJECT_MODEL_PAGE,
+    selectedObjectModel?.id,
+  );
   const selectedObjectModelId =
     (selectedObjectModel?.id as EnqueueImageTo3dObjectModel | undefined) ??
     DEFAULT_OBJECT_MODEL_ID;
@@ -242,12 +246,15 @@ export const ImageTo3DExperience = ({
       });
 
       if (!uploadResult.success || !uploadResult.data) {
-        throw new Error("Failed to upload image");
+        throw new Error(uploadResult.errorMessage || "Failed to upload image");
       }
 
       setUploadedMediaToken(uploadResult.data);
     } catch (error) {
-      toast.error("Failed to upload image");
+      // Show the real reason (and keep it on screen long enough to read).
+      const reason = error instanceof Error ? error.message : String(error);
+      console.error("3D page image upload failed:", error);
+      toast.error(`Failed to upload image: ${reason}`, { duration: 15000 });
       setUploadedPreview(null);
       setUploadedName(null);
     } finally {
@@ -456,6 +463,7 @@ export const ImageTo3DExperience = ({
           prompt: snapshotPrompt || undefined,
           reference_image_media_tokens: activeMode === "image" && uploadedMediaToken ? [uploadedMediaToken] : undefined,
           model: selectedObjectModel?.tauriId ?? selectedObjectModelId,
+          provider: selectedObjectProvider,
           frontend_caller: "mini_app",
           frontend_subscriber_id: subscriberId,
         });
