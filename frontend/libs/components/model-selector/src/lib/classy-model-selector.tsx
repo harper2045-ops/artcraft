@@ -181,7 +181,11 @@ export function ClassyModelSelector({
       const allowed = item.model?.getProviders() || DEFAULT_PROVIDER_OPTIONS;
       if (allowed.includes(selectedProvidersByModel[modelId])) continue;
       if (allowed.length > 0) {
-        setSelectedProvider(page, modelId, allowed[0]);
+        // My fork: default to fal (my own API key) whenever the model supports it.
+        const preferred = allowed.includes(GenerationProvider.Fal)
+          ? GenerationProvider.Fal
+          : allowed[0];
+        setSelectedProvider(page, modelId, preferred);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
