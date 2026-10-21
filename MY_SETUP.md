@@ -27,9 +27,8 @@ Personal fork of [storytold/artcraft](https://github.com/storytold/artcraft) for
 - App name, window and icons: `crates/desktop/artcraft/` (Tauri config)
 - Read `AGENTS.md` for the project's code style rules.
 
-## Warning: the app's data folder is this repo
-The app keeps its data in `~/Artcraft` (`DEFAULT_DATA_DIR` in
-`crates/desktop/artcraft/src/core/state/data_dir/app_data_root.rs`). Mac folder names
-ignore case, so that is this repo folder. Its `credentials/`, `state/`, `downloads/`
-and other folders are listed in `.git/info/exclude` so they never get committed.
-Cleaner fix: move the repo to a folder with a different name (for example `~/artcraft-src`).
+## App data lives outside the repo
+The app keeps its data (credentials, downloads, settings) in `~/Artcraft`, which is set by
+`DEFAULT_DATA_DIR` in `crates/desktop/artcraft/src/core/state/data_dir/app_data_root.rs`.
+Mac folder names ignore case, so the repo lives in `~/artcraft-src` to keep code and data apart.
+Don't clone the repo into `~/ArtCraft`.
